@@ -15,14 +15,7 @@ test('It shows two inputs and a button', () => {
     expect(button).toBeInTheDocument();
 });
 
-test('It calls onUserAdd when the form is submitted (Querying by role)', () => {
-    // Render the component
-    const mock = jest.fn();
-    render(<UserForm onUserAdd={mock}/>)
-
-    // Find the two inputs
-    const [nameInput, emailInput] = screen.getAllByRole("textbox");
-
+const testForm = (nameInput, emailInput, mock) => {
     // Simulate typing in a name
     user.click(nameInput);
     user.keyboard("jane");
@@ -43,6 +36,16 @@ test('It calls onUserAdd when the form is submitted (Querying by role)', () => {
         name: "jane",
         email: "jane@jane.com"
     });
+}
+
+test('It calls onUserAdd when the form is submitted (Querying by role)', () => {
+    // Render the component
+    const mock = jest.fn();
+    render(<UserForm onUserAdd={mock}/>)
+
+    // Find the two inputs
+    const [nameInput, emailInput] = screen.getAllByRole("textbox");
+    testForm(nameInput, emailInput, mock);
 });
 
 test('It calls onUserAdd when the form is submitted (Querying by label)', () => {
@@ -55,25 +58,5 @@ test('It calls onUserAdd when the form is submitted (Querying by label)', () => 
         name: /name/i
     });
     const emailInput = screen.getByLabelText(/email/i);
-
-    // Simulate typing in a name
-    user.click(nameInput);
-    user.keyboard("jane");
-
-    // Simulate typing in an email
-    user.click(emailInput);
-    user.keyboard("jane@jane.com");
-
-    // Find the button
-    const button = screen.getByRole("button");
-
-    // Simulate clicking the button
-    user.click(button);
-
-    // Assertion to make sure 'onUserAdd' gets called with name/email
-    expect(mock).toHaveBeenCalled();
-    expect(mock).toHaveBeenCalledWith({
-        name: "jane",
-        email: "jane@jane.com"
-    });
+    testForm(nameInput, emailInput, mock);
 });
