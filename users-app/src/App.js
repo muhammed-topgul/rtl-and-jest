@@ -2,6 +2,7 @@ import UserForm from "./UserForm";
 import {useState} from "react";
 import UserList from "./UserList";
 import RoleExample from "./component/RoleExample";
+import ColorList from "./component/ColorList";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -18,6 +19,9 @@ function App() {
             <hr/>
             <hr/>
             <RoleExample/>
+            <hr/>
+            <hr/>
+            <ColorList/>
         </div>
     );
 }
