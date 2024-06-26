@@ -3,6 +3,7 @@ import {useState} from "react";
 import UserList from "./UserList";
 import RoleExample from "./component/RoleExample";
 import ColorList from "./component/ColorList";
+import LoadableColorList from "./component/LoadableColorList";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -22,6 +23,9 @@ function App() {
             <hr/>
             <hr/>
             <ColorList/>
+            <hr/>
+            <hr/>
+            <LoadableColorList/>
         </div>
     );
 }
