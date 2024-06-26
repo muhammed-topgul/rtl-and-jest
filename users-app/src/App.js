@@ -4,6 +4,7 @@ import UserList from "./UserList";
 import RoleExample from "./component/RoleExample";
 import ColorList from "./component/ColorList";
 import LoadableColorList from "./component/LoadableColorList";
+import DataForm from "./component/DataForm";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -26,6 +27,9 @@ function App() {
             <hr/>
             <hr/>
             <LoadableColorList/>
+            <hr/>
+            <hr/>
+            <DataForm/>
         </div>
     );
 }
